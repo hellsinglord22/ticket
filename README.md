@@ -1,6 +1,6 @@
 # Ticketing System - Installation Guide
 
-This guide provides step-by-step instructions on how to install the **Project Name** project using Git and Docker.
+This guide provides step-by-step instructions on how to install the **ticketing system** project using Git and Docker.
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ Before proceeding with the installation, ensure that you have the following soft
 
 ## Installation Steps
 
-Follow these steps to install the **Project Name** project:
+Follow these steps to install the **ticketing system** project:
 
 1. Open a terminal or command prompt on your system.
 
@@ -43,7 +43,7 @@ Follow these steps to install the **Project Name** project:
 
 7. To stop the project, press `Ctrl + C` in the terminal or command prompt where Docker Compose is running.
 
-Congratulations! You have successfully installed the **Project Name** project using Git and Docker.
+Congratulations! You have successfully installed the **ticketing system** project using Git and Docker.
 
 ## Troubleshooting
 
