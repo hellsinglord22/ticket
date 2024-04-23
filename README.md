@@ -1,4 +1,4 @@
-# Project Name - Installation Guide
+# Ticketing System - Installation Guide
 
 This guide provides step-by-step instructions on how to install the **Project Name** project using Git and Docker.
 
