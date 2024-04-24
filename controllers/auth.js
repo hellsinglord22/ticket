@@ -17,10 +17,10 @@ exports.login = async (req, res, next) => {
             }, 'secret', { expiresIn: '1h' });
             return res.status(200).json({ message: 'Login successful', token: token });
         }
-        return res.render('unauthorized');
+        return res.status(401).json({ message: 'Login failed' });
     }
     catch (error) {
-        return res.render('server_error');
+        return res.status(500).json({ message: 'Login failed', error: error });
     }
 };
 
