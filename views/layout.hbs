@@ -6,6 +6,24 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    {{{body}}}
+    <nav class="bg-blue-500 py-4 px-6">
+      <div class="flex justify-between items-center">
+        <h1 class="text-white text-xl font-bold">{{title}}</h1>
+        {{#if localStorage.token}}
+        <button id="logoutBtn" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          Logout
+        </button>
+        {{/if}}
+      </div>
+    </nav>
+    <div class="container mx-auto my-4 content">
+      {{{body}}}
+    </div>
+    <script>
+      document.getElementById('logoutBtn').addEventListener('click', function() {
+        localStorage.removeItem('token');
+        // Redirect to the logout page or perform any other logout actions
+      });
+    </script>
   </body>
 </html>

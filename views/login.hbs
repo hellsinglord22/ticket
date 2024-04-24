@@ -36,10 +36,19 @@
             },
             body: JSON.stringify({ email, password })
         })
-        .then(response => response.json())
+        .then(response => {
+            if (response.status === 401) {
+                window.location.href = '/unauthorized';
+            } else if (response.status === 500) {
+                window.location.href = '/internal_error';
+            } else {
+                return response.json();
+            }
+        })
         .then(data => {
             if (data.token) {
                 window.location.href = '/';
+                localStorage.setItem('token', data.token);
             }
         })
         .catch(error => {
