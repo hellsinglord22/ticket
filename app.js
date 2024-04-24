@@ -2,11 +2,12 @@ var viewConfig = require('./config/view');
 var errorConfig = require('./config/error');
 var utilitiesConfig = require('./config/utilities');
 var routesConfig = require('./config/routes');
-var Sequelize = require('sequelize');
+require('./models/index');
 
 var express = require('express');
 
 var app = express();
+
 
 viewConfig(app);
 utilitiesConfig(app);

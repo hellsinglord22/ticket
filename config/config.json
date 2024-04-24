@@ -3,25 +3,34 @@
       "username": "roaa",
       "password": 123,
       "database": "ticket_system",
-      "dialect": "postgresql",
-      "host": "localhost",
-      "port": 5432
+      "dialect": "postgres",
+      "host": "db",
+      "port": 5432,
+      "jwt": {
+        "secret": "secret"
+      }
     },
     "test": {
       "username": "roaa",
       "password": 123,
       "database": "ticket_system",
-      "dialect": "postgresql",
-      "host": "localhost",
-      "port": 5432
+      "dialect": "postgres",
+      "host": "db",
+      "port": 5432,
+      "jwt": {
+        "secret": "secret"
+      }
     },
     "production": {
       "username": "roaa",
       "password": 123,
       "database": "ticket_system",
-      "dialect": "postgresql",
-      "host": "localhost",
-      "port": 5432
+      "dialect": "postgres",
+      "host": "db",
+      "port": 5432,
+      "jwt": {
+        "secret": "secret"
+      }
     }
   }
   
