@@ -43,6 +43,8 @@ Follow these steps to install the **ticketing system** project:
 
 7. To stop the project, press `Ctrl + C` in the terminal or command prompt where Docker Compose is running.
 
+8. After the project has started successfully for the first time, you need to create the database tables and seed the database. Run the following commands: `npm run db:migrate && npm run db:seed` . 
+
 Congratulations! You have successfully installed the **ticketing system** project using Git and Docker.
 
 ## Troubleshooting
