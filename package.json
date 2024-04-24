@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "dev": "nodemon ./bin/www",
+    "db:migrate": "sequelize db:migrate --env development",
+    "db:seed": "sequelize db:seed:all --env development"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -13,6 +15,7 @@
     "hbs": "^4.2.0",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
+    "pg": "^8.11.5",
     "sequelize": "^6.37.3",
     "sqlite3": "^5.1.7"
   },
