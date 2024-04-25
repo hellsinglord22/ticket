@@ -6,18 +6,40 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src='/javascript/util.js'></script>
   </head>
-  <body>
-    <nav style="background-color: #FFF9D2;" class="py-4 px-6 navbar">
+  <body style="background-image: url('/images/background.svg'); background-size: cover; background-repeat: no-repeat;">
+    <nav style="background-color: #D2D8FF;" class="py-4 px-6 navbar">
       <div class="flex justify-between items-center">
-        <h1 class="text-xl font-bold text-violet-300">{{title}}</h1>
+        <div class="flex items-center">
+          <button id="burgerMenuButton" class="text-gray-600 focus:outline-none focus:text-gray-800" onclick="toggleSidebar()">
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+              <path
+                d="M4 6h16M4 12h16M4 18h16"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <h1 class="text-xl font-bold text-violet-300 ml-2">{{title}}</h1>
+        </div>
 
-          <button id="logoutNavButton" class="bg-rose-400 hover:bg-rose-500 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="logout()">Logout</button>
-          <a id="loginNavButton" href="/auth/login" class="bg-violet-300 hover:bg-violet-400 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Login</a>
+        <button id="logoutNavButton" class="bg-rose-400 hover:bg-rose-500 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="logout()">Logout</button>
+        <a id="loginNavButton" href="/auth/login" class="bg-violet-400 hover:bg-violet-500 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Login</a>
 
       </div>
-    </nav> <!-- END: Modify navbar color -->
+    </nav>
     <div class="container mx-auto content">
       {{{body}}}
+    </div>
+
+    <div id="sidebar" class="bg-white w-64 h-screen fixed top-0 left-0 transform -translate-x-full transition-transform duration-300 ease-in-out">
+      <ul class="mt-8">
+        <li><a href="/tickets/create" class="text-gray-600 hover:text-gray-800">Create Ticket</a></li>
+        <li><a href="/tickets" class="text-gray-600 hover:text-gray-800">All Tickets</a></li>
+        <li><a href="/tickets/open" class="text-gray-600 hover:text-gray-800">Open Tickets</a></li>
+        <li><a href="/tickets/closed" class="text-gray-600 hover:text-gray-800">Closed Tickets</a></li>
+      </ul>
     </div>
 
     <script>
@@ -37,7 +59,10 @@
         window.location.href = '/auth/login';
       }
 
-      login
+      toggleSidebar = () => {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('-translate-x-full');
+      }
     </script>
   </body>
 </html>
