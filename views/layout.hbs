@@ -4,26 +4,40 @@
     <title>{{title}}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src='/javascript/util.js'></script>
   </head>
   <body>
-    <nav class="bg-blue-500 py-4 px-6">
+    <nav style="background-color: #FFF9D2;" class="py-4 px-6 navbar">
       <div class="flex justify-between items-center">
-        <h1 class="text-white text-xl font-bold">{{title}}</h1>
-        {{#if localStorage.token}}
-        <button id="logoutBtn" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-          Logout
-        </button>
-        {{/if}}
+        <h1 class="text-xl font-bold text-violet-300">{{title}}</h1>
+
+          <button id="logoutNavButton" class="bg-rose-400 hover:bg-rose-500 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="logout()">Logout</button>
+          <a id="loginNavButton" href="/auth/login" class="bg-violet-300 hover:bg-violet-400 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Login</a>
+
       </div>
-    </nav>
-    <div class="container mx-auto my-4 content">
+    </nav> <!-- END: Modify navbar color -->
+    <div class="container mx-auto content">
       {{{body}}}
     </div>
+
     <script>
-      document.getElementById('logoutBtn').addEventListener('click', function() {
-        localStorage.removeItem('token');
-        // Redirect to the logout page or perform any other logout actions
+      document.addEventListener('DOMContentLoaded', () => {
+        const token = localStorage.getItem('token');
+        if (token) {
+          document.getElementById('loginNavButton').style.display = 'none';
+          document.getElementById('logoutNavButton').style.display = 'block';
+        } else {
+          document.getElementById('loginNavButton').style.display = 'block';
+          document.getElementById('logoutNavButton').style.display = 'none';
+        }
       });
+
+      logout = () => {
+        localStorage.removeItem('token');
+        window.location.href = '/auth/login';
+      }
+
+      login
     </script>
   </body>
 </html>

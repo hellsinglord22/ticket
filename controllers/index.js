@@ -1,5 +1,5 @@
 exports.getIndex = (req, res, next) => {
-    res.render('index', { title: 'Ticket System' });
+    res.render('index', { title: 'Swift Ticket' });
 }
 
 exports.unauthorized = (req, res, next) => {
