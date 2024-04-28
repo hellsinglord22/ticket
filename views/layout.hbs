@@ -5,6 +5,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src='/javascript/util.js'></script>
+    <style>
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+      }
+
+      .container {
+        margin-top: 64px; /* Adjust this value based on the navbar height */
+      }
+
+      #sidebar {
+        margin-top: 64px; /* Adjust this value based on the navbar height */
+      }
+    </style>
   </head>
   <body style="background-image: url('/images/background.svg'); background-size: cover; background-repeat: no-repeat;">
     <nav style="background-color: #D2D8FF;" class="py-4 px-6 navbar">
@@ -29,10 +46,6 @@
 
       </div>
     </nav>
-    <div class="container mx-auto content">
-      {{{body}}}
-    </div>
-
     <div id="sidebar" class="bg-white w-64 h-screen fixed top-0 left-0 transform -translate-x-full transition-transform duration-300 ease-in-out">
       <ul class="mt-8">
         <li><a href="/tickets/create" class="text-gray-600 hover:text-gray-800">Create Ticket</a></li>
@@ -40,6 +53,10 @@
         <li><a href="/tickets/open" class="text-gray-600 hover:text-gray-800">Open Tickets</a></li>
         <li><a href="/tickets/closed" class="text-gray-600 hover:text-gray-800">Closed Tickets</a></li>
       </ul>
+    </div>
+
+    <div class="container mx-auto content">
+      {{{body}}}
     </div>
 
     <script>

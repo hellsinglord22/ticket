@@ -1,8 +1,9 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url('/images/navbar.png');
+  background-image: url('/images/navbar.svg');
   background-repeat: no-repeat;
   background-size: cover;
+  opacity: 0.5;
 }
 
 .content {
