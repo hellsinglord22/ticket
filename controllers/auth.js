@@ -15,7 +15,7 @@ exports.login = async (req, res, next) => {
                 email: result.email,
                 userId: result.id,
                 type: result.type,
-            }, 'secret', { expiresIn: '1h' });
+            }, 'secret');
             return res.status(200).json({
                 message: 'Login successful',
                 token: token,
