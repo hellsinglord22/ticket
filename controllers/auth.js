@@ -16,7 +16,15 @@ exports.login = async (req, res, next) => {
                 userId: result.id,
                 type: result.type,
             }, 'secret', { expiresIn: '1h' });
-            return res.status(200).json({ message: 'Login successful', token: token, user: _.omit(result, 'password') });
+            return res.status(200).json({
+                message: 'Login successful',
+                token: token,
+                user: {
+                    email: result.email,
+                    type: result.type,
+                    id: result.id
+                },
+            });
         }
         return res.status(401).json({ message: 'Login failed' });
     }

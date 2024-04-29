@@ -38,7 +38,6 @@ exports.createUser = async (req, res, next) => {
             type,
             password,
         });
-        console.log('the value of user: ', user);
         return res.redirect('/user?token=' + token);
     }
     return res.redirect('/unauthorized');

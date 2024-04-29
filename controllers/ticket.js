@@ -32,3 +32,20 @@ exports.createTicketView = (req, res, next) => {
     }
     return res.render('unauthorized');
 }
+
+exports.editTicket = async (req, res, next) => {
+    const token = req.token;
+    try {
+        await models.Ticket.update({
+            ...req.body,
+        }, {
+            where: {
+                id: req.params.id,
+            }
+        });
+        return res.json({ message: 'Ticket updated successfully' });
+    } catch (error) {
+        return res.render('server_error');
+    }
+
+};
