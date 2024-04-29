@@ -24,7 +24,6 @@ module.exports = (app) => {
         } else {
             jwt.verify(token, 'secret', (err, decoded) => {
                 if (err) {
-                    console.error(err);
                     return res.render('unauthorized');
                 } else {
                     req.user = decoded;
