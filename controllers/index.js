@@ -49,6 +49,7 @@ exports.getIndex = async (req, res, next) => {
             created_by: ticket.creator.email,
             assigned_to: ticket.assignee ? ticket.assignee.email : 'Unassigned',
             createdAt: ticket.createdAt.toDateString(),
+            isTech: req.user.type === 'tech',
         };
     });
 

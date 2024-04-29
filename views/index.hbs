@@ -16,7 +16,9 @@
                 <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
                 <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created At</th>
                 <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                {{#if isTech}}
                 <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Resolve</th>
+                {{/if}}
             </tr>
         </thead>
         <tbody>
@@ -28,9 +30,11 @@
                 <td class="px-6 py-4 whitespace-nowrap">{{ title }}</td>
                 <td class="px-6 py-4 whitespace-nowrap">{{ createdAt }}</td>
                 <td class="px-6 py-4 whitespace-nowrap">{{ status }}</td>
+                {{#if isTech}}
                 <td class="px-6 py-4 whitespace-nowrap">
                     <button class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded" onclick="resolveTicket('{{id}}')">Resolve</button>
                 </td>
+                {{/if}}
             </tr>
             {{/each}}
         </tbody>
