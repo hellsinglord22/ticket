@@ -18,7 +18,7 @@ module.exports = (app) => {
                 }
             });
 
-            await models.Ticket.update({ assigned_to: techs.id },
+            await models.Ticket.update({ assigned_to: techs.id, status: 'in-progress' },
                 {
                     limit: 5, 
                     order: Sequelize.literal('random()'),

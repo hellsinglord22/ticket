@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     assigned_to: DataTypes.INTEGER,
     title: DataTypes.STRING,
     description: DataTypes.STRING,
+    status: DataTypes.ENUM('open', 'closed', 'in-progress')
     
   }, {
     sequelize,

@@ -3,6 +3,8 @@ var router = express.Router();
 var userController = require('../controllers/user.js');
 
 router.all('/',userController.getIndex);
-// !-- Do not remove this line --! //
+router.get('/create',userController.createUserView);
+router.post('/create',userController.createUser);
+
 
 module.exports = router;

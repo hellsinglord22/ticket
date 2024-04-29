@@ -49,6 +49,7 @@
             if (data.token) {
                 // add token to the url 
                 localStorage.setItem('token', data.token);
+                localStorage.setItem('role', data.user.type);
                 window.location.href = '/?token=' + data.token;
             }
         })
