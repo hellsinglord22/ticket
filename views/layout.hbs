@@ -3,6 +3,7 @@
   <head>
     <title>{{title}}</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src='/javascript/util.js'></script>
     <style>
@@ -97,13 +98,6 @@
           document.getElementById('logoutNavButton').style.display = 'none';
           document.getElementById('burgerMenuButton').style.display = 'none';
         }
-
-        
-        // allow /auth/login, /unauthorized, and /internal_error to be accessed without a token
-        if (_.includes(['/auth/login', '/unauthorized', '/internal_error'], window.location.pathname), !token) {
-          window.location.href = `${window.location.pathname}`;
-        }
-
 
       });
 

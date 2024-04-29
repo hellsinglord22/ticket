@@ -1,13 +1,36 @@
-exports.getIndex = (req, res, next) => {
+const { Association } = require('sequelize');
+const models = require('../models');
+
+exports.getIndex = async (req, res, next) => {
 
 
+    let tickets = [];
+    try {
+        if (req.user.type === 'admin') {
+            tickets = await models.Ticket.findAll({}); 
+        } else if (req.user.type === 'student') {
+            tickets = await models.Ticket.findAll({
+                where: {
+                    created_by: req.user.userId
+                }
+            });
+        } else if (req.user.type === 'tech') {
+            tickets = await models.Ticket.findAll({
+                where: {
+                    assigned_to: req.user.userId
+                }
+            });
+        } else {
+            return res.render('unauthorized');
+        }
 
-    const tickets = [
-        { assigned_to: "John Doe", created_by: "Jane Smith", description: "Ticket description 1", title: "Ticket 1", createdAt: "2022-01-01" },
-        { assigned_to: "Mike Johnson", created_by: "Alice Brown", description: "Ticket description 2", title: "Ticket 2", createdAt: "2022-02-02" },
-      ];
+    } catch(error) {
+        console.error(error);
+        return res.render('server_error');
+    }
 
-    res.render('index', {
+    console.log(JSON.stringify(tickets, null, 2));
+    return res.render('index', {
         title: 'Swift Ticket',
         name: req.user.email,
         tickets: tickets,

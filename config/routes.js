@@ -9,7 +9,7 @@ module.exports = (app) => {
 
     // adds authentication middleware 
     app.use((req, res, next) => {
-        const publicPaths = ['/auth/login', '/auth/api/login', '/unauthorized', 'server_error'];
+        const publicPaths = ['/auth/login', '/auth/api/login', '/unauthorized', '/server_error'];
 
         // check if the req.path is in the public paths 
         if (_.includes(publicPaths, req.path)) {
@@ -27,6 +27,7 @@ module.exports = (app) => {
                     return res.render('unauthorized');
                 } else {
                     req.user = decoded;
+                    req.token = token;
                     next();
                 }
             });

@@ -24,7 +24,6 @@
 
 <script>
   function createTicket() {
-    debugger;
     const token = localStorage.getItem('token');
     const title = document.getElementById('title').value;
     const description = document.getElementById('description').value;
@@ -37,16 +36,13 @@
       },
       body: JSON.stringify({ title, description })
     })
-      .then(response => response.json())
       .then(data => {
         if (data.error) {
-          alert(data.error);
-        } else {
-          console.log('Ticket Created Successfully');
-        }
+          console.error(error);
+        } 
       })
       .catch(error => {
-        console.error('Error:', error);
+        console.error(error);
       }); 
 
 
