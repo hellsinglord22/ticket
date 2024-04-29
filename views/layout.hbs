@@ -48,10 +48,8 @@
 
     <div id="sidebar" class="bg-violet-200 w-64 h-screen fixed top-0 left-0 transform -translate-x-full transition-transform duration-300 ease-in-out">
       <ul class="mt-8 font-bold p-6">
-        <li><a href="/tickets" class="block py-2 px-4 text-gray-800 hover:bg-purple-700 hover:text-white">All Tickets</a></li>
-        <li><a href="/tickets/open" class="block py-2 px-4 text-gray-800 hover:bg-purple-700 hover:text-white">Open Tickets</a></li>
-        <li><a href="/tickets/closed" class="block py-2 px-4 text-gray-800 hover:bg-purple-700 hover:text-white">Closed Tickets</a></li>
-        <li><a href="/tickets/create" class="block py-2 px-4 text-gray-800 hover:bg-purple-700 hover:text-white">Create Ticket</a></li>
+        <li><a href="/" class="block py-2 px-4 text-gray-800 hover:bg-purple-700 hover:text-white">All Tickets</a></li>
+        <li><a href="/ticket/create" class="block py-2 px-4 text-gray-800 hover:bg-purple-700 hover:text-white">Create Ticket</a></li>
       </ul>
     </div>
 
@@ -90,10 +88,6 @@
         
         const token = localStorage.getItem('token');
 
-        if (window.location.pathname !== '/auth/login' && !token) {
-          window.location.href = '/auth/login';
-        }
-
         if (token) {
           document.getElementById('loginNavButton').style.display = 'none';
           document.getElementById('logoutNavButton').style.display = 'block';
@@ -103,6 +97,14 @@
           document.getElementById('logoutNavButton').style.display = 'none';
           document.getElementById('burgerMenuButton').style.display = 'none';
         }
+
+        
+        // allow /auth/login, /unauthorized, and /internal_error to be accessed without a token
+        if (_.includes(['/auth/login', '/unauthorized', '/internal_error'], window.location.pathname), !token) {
+          window.location.href = `${window.location.pathname}`;
+        }
+
+
       });
 
       logout = () => {

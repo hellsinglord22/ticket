@@ -46,9 +46,11 @@
             }
         })
         .then(data => {
+            debugger;
             if (data.token) {
-                window.location.href = '/';
+                // add token to the url 
                 localStorage.setItem('token', data.token);
+                window.location.href = '/?token=' + data.token;
             }
         })
         .catch(error => {

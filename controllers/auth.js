@@ -1,5 +1,6 @@
 const model = require('../models/index');
 const jwt = require('jsonwebtoken');
+const _ = require('lodash');
 
 exports.login = async (req, res, next) => {
     try {
@@ -15,7 +16,7 @@ exports.login = async (req, res, next) => {
                 userId: result.id,
                 type: result.type,
             }, 'secret', { expiresIn: '1h' });
-            return res.status(200).json({ message: 'Login successful', token: token });
+            return res.status(200).json({ message: 'Login successful', token: token, user: _.omit(result, 'password') });
         }
         return res.status(401).json({ message: 'Login failed' });
     }

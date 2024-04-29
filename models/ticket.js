@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       models.Ticket.belongsTo(models.User, {
-        foreignKey: 'assigned'
+        foreignKey: 'assignedTo'
       });
     }
   }
