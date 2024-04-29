@@ -1,8 +1,6 @@
-const { Association } = require('sequelize');
 const models = require('../models');
 
 exports.getIndex = async (req, res, next) => {
-
 
     let tickets = [];
     try {
