@@ -79,18 +79,14 @@
           const token = localStorage.getItem('token');
           const links = document.querySelectorAll('a');
 
-          links.forEach(link => {
-            link.addEventListener('click', event => {
-              event.preventDefault();
-              if (token) {
-                const href = link.getAttribute('href');
-                const newHref = `${href}?token=${token}`;
-                window.location.href = newHref;
-              } else {
-                window.location.href = '/auth/login';
-              }
-            });
-          });
+          event.preventDefault();
+          if (token) {
+            const href = link.getAttribute('href');
+            const newHref = `${href}?token=${token}`;
+            window.location.href = newHref;
+          } else {
+            window.location.href = '/auth/login';
+          }
         });
       });
 
