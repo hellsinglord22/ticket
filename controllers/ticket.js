@@ -3,6 +3,7 @@ const models = require('../models');
 
 exports.createTicket = async (req, res, next) => {
     if (_.includes(['admin', 'student'], req.user.type)) {
+        console.log('i got here my friend once');
         try {
             const { title, description } = req.body;
             const token = req.token;
@@ -14,7 +15,7 @@ exports.createTicket = async (req, res, next) => {
             });
 
             if (result) {
-                return res.redirect(`/?token=${token}`);
+                return res.json({ message: 'Ticket created successfully', ticket: result, token });
             }
             
         } catch (err) {
